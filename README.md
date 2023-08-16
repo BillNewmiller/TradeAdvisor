@@ -12,4 +12,4 @@ Trade Advisor runs a monte carlo simulation for a vertical option spread.
 
 #inputs
 
-Inputs are obtaining from typical trading platforms that provide information regarding option contracts prices, underlying market price, contract expiration date, implied volatility of the underlying, and estimates of potential losses and profits
+Inputs are obtained from typical trading platforms that provide information regarding option contracts prices, underlying market price, contract expiration date, implied volatility of the underlying, and estimates of potential losses and profits
