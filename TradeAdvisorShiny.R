@@ -62,21 +62,26 @@ server <- function(input, output) {
     
     probability <- touches_target / n_simulations
     avg_gain_or_loss <- total_gain_or_loss / n_simulations
+    median_gain_or_loss <- median(total_gain_or_loss) # Compute the median
     
-    return(list(probability, avg_gain_or_loss))
+    return(list(probability, avg_gain_or_loss, median_gain_or_loss))
   }
   
   observeEvent(input$simulate, {
     results <- simulate_stock_path(input$current_price, input$volatility, input$days_to_expiration, input$short_leg, input$loss_at_short_leg, input$expected_profit, n_simulations = input$n_simulations)
     probability <- results[[1]]
     avg_gain_or_loss <- results[[2]]
+    median_gain_or_loss <- results[[3]] # Extract the median gain/loss
+    
     
     output$result <- renderPrint({
       cat("Probability of stock touching the short leg of", input$short_leg, "in", input$days_to_expiration, "days is:", probability, "\n",
           "Loss Index:", input$loss_at_short_leg*probability, "\n",
           "Profit Index:", input$expected_profit*(1-probability), "\n",
           "Trade Continuation Index", input$expected_profit*(1-probability)/input$loss_at_short_leg*probability, "\n",
+          "Median Gain or Loss after simulation:", median_gain_or_loss, "\n",
           "Average Gain or Loss after simulation:", avg_gain_or_loss)
+
       
     })
   })
