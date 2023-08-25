@@ -70,9 +70,7 @@ server <- function(input, output) {
       cat("Probability of stock touching the short leg of", input$short_leg, "in", input$days_to_expiration, "days is:", probability, "\n",
           "Loss Index:", input$loss_at_short_leg*probability, "\n",
           "Profit Index:", input$expected_profit*(1-probability), "\n",
-          "Trade Continuation Index", input$expected_profit*(1-probability)/input$loss_at_short_leg*probability, "\n",
           "Average Gain or Loss after simulation:", avg_gain_or_loss, "\n",
-          "Median Gain or Loss after simulation:", median_gain_or_loss, "\n",
           "Mean Gain or Loss after simulation:", mean_gain_or_loss)
     })
     

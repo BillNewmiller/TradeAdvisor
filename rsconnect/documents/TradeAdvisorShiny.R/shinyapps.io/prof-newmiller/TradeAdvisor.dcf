@@ -5,7 +5,7 @@ account: prof-newmiller
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9610384
-bundleId: 7570763
+bundleId: 7608780
 url: https://prof-newmiller.shinyapps.io/TradeAdvisor/
 version: 1
 asMultiple: FALSE
