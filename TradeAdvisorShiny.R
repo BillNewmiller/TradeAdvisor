@@ -77,7 +77,7 @@ server <- function(input, output) {
     # Histogram for gain or loss vector
     output$histPlot <- renderPlot({
       hist(gain_or_loss_vector, 
-           main = "Distribution of Gain/Loss from Simulations", 
+           main = "Distribution of Gain or Loss from Simulations", 
            xlab = "Gain/Loss",
            col = "skyblue",
            border = "black")
