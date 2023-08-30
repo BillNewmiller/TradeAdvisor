@@ -13,7 +13,7 @@ ui <- fluidPage(
       numericInput("short_leg", label = "Short Leg:", value = 90),
       numericInput("loss_at_short_leg", label = "Loss at Short Leg:", value = 40),
       numericInput("expected_profit", label = "Expected Profit:", value = 20),
-      numericInput("n_simulations", label = "Number of Simulations:", value = 10000),
+      numericInput("n_simulations", label = "Number of Simulations:", value = 20000),
       actionButton("simulate", "Simulate")
     ),
     
@@ -68,9 +68,6 @@ server <- function(input, output) {
     
     output$result <- renderPrint({
       cat("Probability of stock touching the short leg of", input$short_leg, "in", input$days_to_expiration, "days is:", probability, "\n",
-          "Loss Index:", input$loss_at_short_leg*probability, "\n",
-          "Profit Index:", input$expected_profit*(1-probability), "\n",
-          "Average Gain or Loss after simulation:", avg_gain_or_loss, "\n",
           "Mean Gain or Loss after simulation:", mean_gain_or_loss)
     })
     
@@ -79,7 +76,7 @@ server <- function(input, output) {
       hist(gain_or_loss_vector, 
            main = "Distribution of Gain or Loss from Simulations", 
            xlab = "Gain/Loss",
-           col = "skyblue",
+           col = "skyblue", breaks=2,
            border = "black")
     })
   })
